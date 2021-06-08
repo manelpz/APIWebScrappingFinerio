@@ -24,9 +24,6 @@ namespace APIWebScrappingFinerio.Controllers
             _dbContext = dbContext;
         }
 
-
-        
-
         //GET ARTIST
         [HttpGet("[Action]")]
         public IActionResult AllArtists(string genreName)
@@ -44,6 +41,24 @@ namespace APIWebScrappingFinerio.Controllers
             return Ok(artists);
         }
 
+
+        //GET ARTIST X SONG
+        [HttpGet("[Action]")]
+        public IActionResult FindArtist(string songName)
+        {
+            var findArtist = from artist in _dbContext.Artists
+                             join album in _dbContext.Albums on artist.Id equals album.ArtistId
+                             join song in _dbContext.Songs on album.Id equals song.AlbumId
+                          where song.Name.StartsWith(songName)
+                          select new
+                          {
+                              Id = artist.Id,
+                              Name = artist.Name,
+                              Song = song.Name
+
+                          };
+            return Ok(findArtist);
+        }
 
     }
 }
