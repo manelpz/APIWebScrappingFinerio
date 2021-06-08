@@ -11,7 +11,7 @@ namespace APIWebScrappingFinerio.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ArtistId { get; set; }
+        public int ArtistId { get; set; }
         public List<Song> Songs { get; set; }
     }
 }

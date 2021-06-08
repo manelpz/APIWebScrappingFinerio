@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIWebScrappingFinerio.Migrations
 {
     [DbContext(typeof(APIDBContext))]
-    [Migration("20210608220902_InitialCreate")]
+    [Migration("20210608224724_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,10 +28,7 @@ namespace APIWebScrappingFinerio.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ArtistId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ArtistId1")
+                    b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -39,7 +36,7 @@ namespace APIWebScrappingFinerio.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtistId1");
+                    b.HasIndex("ArtistId");
 
                     b.ToTable("Albums");
                 });
@@ -126,7 +123,9 @@ namespace APIWebScrappingFinerio.Migrations
                 {
                     b.HasOne("APIWebScrappingFinerio.Models.Artist", null)
                         .WithMany("Albums")
-                        .HasForeignKey("ArtistId1");
+                        .HasForeignKey("ArtistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("APIWebScrappingFinerio.Models.Artist", b =>
