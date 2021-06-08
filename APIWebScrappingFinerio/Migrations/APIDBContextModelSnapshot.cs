@@ -49,11 +49,11 @@ namespace APIWebScrappingFinerio.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SubGenre")
-                        .HasColumnType("int");
 
                     b.Property<int?>("SubGenreId")
                         .HasColumnType("int");

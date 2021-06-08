@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIWebScrappingFinerio.Migrations
 {
     [DbContext(typeof(APIDBContext))]
-    [Migration("20210608184241_InitialCreate")]
+    [Migration("20210608220902_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,11 +51,11 @@ namespace APIWebScrappingFinerio.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SubGenre")
-                        .HasColumnType("int");
 
                     b.Property<int?>("SubGenreId")
                         .HasColumnType("int");
