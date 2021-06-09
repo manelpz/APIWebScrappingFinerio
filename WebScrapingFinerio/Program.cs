@@ -10,27 +10,23 @@ namespace WebScrapingFinerio
         public static void Main(string[] args)
         {
 
-
             GetInfoWeb GetInfoWeb = new GetInfoWeb();
             ShowInfoConsole ShowInfoConsole = new ShowInfoConsole();
             
-            //List<string> artists = GetInfoWeb.GetAlbumByArtist("60-tigres");
-
             //ArtistByGenre
-            /*GetInfoWeb.NameClass = ".album_name";
+            /*GetInfoWeb.NameClass = ".artist_name";
             GetInfoWeb.NameURI = "https://us.napster.com/genre/";
             List<string> filteredList = GetInfoWeb.GetInfoFilter("pop");*/
             
             //ArtistBySong
-            GetInfoWeb.NameClass = ".album_name";
+            /*GetInfoWeb.NameClass = ".artist-name";
             GetInfoWeb.NameURI = "https://us.napster.com/search/track?query=";
-            List<string> filteredList = GetInfoWeb.GetInfoFilter("viento");
+            List<string> filteredList = GetInfoWeb.GetInfoFilter("viento");*/
 
-            /*
             //AlbumByArtist
             GetInfoWeb.NameClass = ".album_name";
-            GetInfoWeb.NameURI = "https://us.napster.com/artist/{artist}";
-            */
+            GetInfoWeb.NameURI = "https://us.napster.com/artist/";
+            List<string> filteredList = GetInfoWeb.GetInfoFilter("60-tigres");
 
             ShowInfoConsole.showInfoFunc(filteredList);
 

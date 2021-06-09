@@ -8,21 +8,15 @@ namespace WebScrapingFinerio
 {
     public class GetInfoWeb
     {
-        public string NameURI
-        { get; set; }
-
-        public string NameClass
-        { get; set; }
+        public string NameURI{ get;set;}
+        public string NameClass{ get;set;}
 
         public List<string> GetInfoFilter(string FilterValue)
         {
 
             List<string> FilteredList = new List<string>();
-
             HtmlWeb oWeb = new HtmlWeb();
-            //HtmlDocument doc = oWeb.Load($"{NameURI}{FilterValue}");
-            HtmlDocument doc = oWeb.Load($"https://us.napster.com/search/track?query={FilterValue}");
-
+            HtmlDocument doc = oWeb.Load($"{NameURI}{FilterValue}");
 
             foreach (var Node in doc.DocumentNode.CssSelect(NameClass))
             {
