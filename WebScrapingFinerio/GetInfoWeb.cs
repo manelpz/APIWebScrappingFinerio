@@ -11,13 +11,13 @@ namespace WebScrapingFinerio
         public string NameURI{ get;set;}
         public string NameClass{ get;set;}
 
-        public List<string> GetInfoFilter(string FilterValue)
+        public List<string> GetInfoFilter()
         {
 
             List<string> FilteredList = new List<string>();
             HtmlWeb oWeb = new HtmlWeb();
-            HtmlDocument doc = oWeb.Load($"{NameURI}{FilterValue}");
-
+            //HtmlDocument doc = oWeb.Load($"{NameURI}{FilterValue}");
+            HtmlDocument doc = oWeb.Load(NameURI);
             foreach (var Node in doc.DocumentNode.CssSelect(NameClass))
             {
                 var nodeAnchor = Node.CssSelect("a").First();
