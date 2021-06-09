@@ -6,10 +6,7 @@ namespace WebScrappingFinerio.Data
 {
     public class WebSBDContext : DbContext
     {
-        /*public WebSBDContext(DbContextOptions<WebSBDContext> options) : base(options)
-        {
-        }*/
-
+        
         public DbSet<Genre> Genres { get; set; }
 
         public DbSet<SubGenre> SubGenres { get; set; }
