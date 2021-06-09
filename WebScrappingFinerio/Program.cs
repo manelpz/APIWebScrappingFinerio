@@ -8,8 +8,11 @@ namespace WebScrappingFinerio
 
         public static void Main(string[] args)
         {
+
+            
             GetInfoWeb GetInfoWeb = new GetInfoWeb();
             ShowInfoConsole ShowInfoConsole = new ShowInfoConsole();
+            DataBaseConnection DataBaseConnection = new DataBaseConnection();
 
             string filterValue = "";
 
@@ -54,4 +57,8 @@ namespace WebScrappingFinerio
 
 
     }
+
+
+
+
 }
