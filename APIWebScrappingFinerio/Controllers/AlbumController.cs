@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using APIWebScrappingFinerio.Data;
 
@@ -26,8 +24,7 @@ namespace APIWebScrappingFinerio.Controllers
         public IActionResult AllAlbums(string artistName)
         {
             var albums = from album in _dbContext.Albums
-                          join artist in _dbContext.Artists on album.ArtistId equals artist.Id
-                          //where artist.Name == artistName
+                         join artist in _dbContext.Artists on album.ArtistId equals artist.Id
                          where artist.Name.StartsWith(artistName)
                          select new
                           {
