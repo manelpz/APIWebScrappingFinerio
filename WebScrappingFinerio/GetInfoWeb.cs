@@ -4,12 +4,13 @@ using System.Linq;
 using HtmlAgilityPack;
 using ScrapySharp.Extensions;
 
+
 namespace WebScrapingFinerio
 {
     public class GetInfoWeb
     {
-        public string NameURI{ get;set;}
-        public string NameClass{ get;set;}
+        public string NameURI { get; set; }
+        public string NameClass { get; set; }
 
         public List<string> GetInfoFilter()
         {
@@ -28,9 +29,9 @@ namespace WebScrapingFinerio
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error getting data "+ex);
+                Console.WriteLine("Error getting data " + ex);
             }
-            
+
             return FilteredList;
         }
 

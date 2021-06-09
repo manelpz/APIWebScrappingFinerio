@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using WebScrapingFinerio;
 
-
-namespace WebScrapingFinerio
+namespace WebScrappingFinerio
 {
     class MainClass
     {
 
         public static void Main(string[] args)
         {
-
             GetInfoWeb GetInfoWeb = new GetInfoWeb();
             ShowInfoConsole ShowInfoConsole = new ShowInfoConsole();
 
@@ -19,7 +17,7 @@ namespace WebScrapingFinerio
             filterValue = "rock";
             GetInfoWeb.NameClass = ".genre-item";
             GetInfoWeb.NameURI = $"https://us.napster.com/genre/{filterValue}";
-           
+
 
             //ArtistByGenre
             /*filterValue = "pop";
@@ -54,10 +52,6 @@ namespace WebScrapingFinerio
 
         }
 
-        
+
     }
-
-
-
-
 }
