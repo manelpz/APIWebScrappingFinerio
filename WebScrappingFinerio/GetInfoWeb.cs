@@ -12,6 +12,8 @@ namespace WebScrapingFinerio
         public string NameURI { get; set; }
         public string NameClass { get; set; }
 
+        ShowInfoConsole ShowInfoConsole = new ShowInfoConsole();
+
         public List<string> GetInfoFilter()
         {
 
@@ -29,11 +31,13 @@ namespace WebScrapingFinerio
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error getting data " + ex);
+                ShowInfoConsole.Message("Error getting data " + ex);
             }
 
             return FilteredList;
         }
+
+        
 
     }
 }

@@ -8,26 +8,31 @@ namespace WebScrappingFinerio
 
         public static void Main(string[] args)
         {
+            string filterValue = "";
 
-            
             GetInfoWeb GetInfoWeb = new GetInfoWeb();
             ShowInfoConsole ShowInfoConsole = new ShowInfoConsole();
             DataBaseConnection DataBaseConnection = new DataBaseConnection();
 
-            string filterValue = "";
+            ShowInfoConsole.ShowMenu();
 
             //GenreAndSubGenre
-            filterValue = "rock";
+            /*filterValue = "rock";
             GetInfoWeb.NameClass = ".genre-item";
             GetInfoWeb.NameURI = $"https://us.napster.com/genre/{filterValue}";
+            */
 
 
             //ArtistByGenre
-            /*filterValue = "pop";
+            /*
+             * filterValue = "rock";
+
             GetInfoWeb.NameClass = ".artist_name";
             GetInfoWeb.NameURI = $"https://us.napster.com/genre/{filterValue}";
-            //List<string> filteredList = GetInfoWeb.GetInfoFilter();*/
 
+            var ListInfo= GetInfoWeb.GetInfoFilter();
+            DataBaseConnection.DataBaseConnectionList(ListInfo);
+            */
 
             //AlbumByArtist
             /*filterValue = "60-tigres";
@@ -50,7 +55,7 @@ namespace WebScrappingFinerio
             //List<string> filteredList = GetInfoWeb.GetInfoFilter();*/
 
 
-            ShowInfoConsole.showInfoFunc(GetInfoWeb.GetInfoFilter());
+
 
 
         }

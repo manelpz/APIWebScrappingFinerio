@@ -2,35 +2,49 @@
 using WebScrappingFinerio.Data;
 using System.Collections.Generic;
 using System;
+using System.Linq;
+using WebScrapingFinerio;
 
 namespace WebScrappingFinerio
 {
     public class DataBaseConnection
     {
+        ShowInfoConsole ShowInfoConsole = new ShowInfoConsole();
 
         public void DataBaseConnectionList(List<string> DataList)
         {
-
-            try
+            if (DataList != null && (DataList.Any()))
             {
-                using (var context = new WebSBDContext())
+                foreach (var data in DataList)
                 {
-                    var std = new Artist()
+                    try
                     {
-                        Name = "linkin park",
-                        GenreId = 1,
-                        SubGenreId = 1
-                    };
+                        using (var context = new WebSBDContext())
+                        {
+                            var std = new Artist()
+                            {
+                                Name = data,
+                                GenreId = 1,
+                                SubGenreId = 1
+                            };
 
-                    context.Artists.Add(std);
-                    context.SaveChanges();
+                            context.Artists.Add(std);
+                            context.SaveChanges();
+                        }
+                    }
+                    catch (System.Exception ex)
+                    {
+                        ShowInfoConsole.Message("Error in database: " + ex);
+                    }
                 }
+
             }
-            catch (System.Exception ex)
+            else
             {
-                Console.WriteLine("Error in database: " + ex);
+                ShowInfoConsole.Message("No results found ");
             }
-            
+
+
         }
     }
 }
