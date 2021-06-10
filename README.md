@@ -18,16 +18,17 @@ Documentation of endpoints on PostMan link: [Documentation](https://documenter.g
 
 ***
 
-### Endpoint list
-
-![EndPoints](https://user-images.githubusercontent.com/2387874/121461102-d1032b80-c973-11eb-9167-017f1e209277.png)
-***
-
 ### API
 
 Note: to load the endpoints go to index.html
 ![Screen Shot 2021-06-09 at 22 57 27](https://user-images.githubusercontent.com/2387874/121462362-1cb6d480-c976-11eb-8b62-8de61d899306.png)
 
+***
+
+### Endpoint list
+
+![EndPoints](https://user-images.githubusercontent.com/2387874/121461102-d1032b80-c973-11eb-9167-017f1e209277.png)
+***
 
 ### Azure SQL Server
 
