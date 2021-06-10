@@ -3,10 +3,10 @@
 
 ![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=pull_request)
 
-### Documentation
+### API Documentation
 
 
-Documentation API link: [Documentation](https://documenter.getpostman.com/view/15533955/TzeRoVAg)
+Documentation of endpoints on PostMan link: [Documentation](https://documenter.getpostman.com/view/15533955/TzeRoVAg)
 
 ***
 
@@ -25,5 +25,5 @@ Documentation API link: [Documentation](https://documenter.getpostman.com/view/1
 
 ### API
 
-
+Note: to load the endpoints go to index.html
 ![API](https://user-images.githubusercontent.com/2387874/121461165-f1cb8100-c973-11eb-86be-e4e14d4abd71.png)
