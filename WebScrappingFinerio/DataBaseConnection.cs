@@ -156,7 +156,7 @@ namespace WebScrappingFinerio
                         context.Albums.AddRange(AlbumList);
                     }
                     context.SaveChanges();
-                    Console.WriteLine($"{ DataList.Count} rows inserted in DB");
+                    Console.WriteLine($"{ listWithoutDuplicates.Count} rows inserted in DB");
                 }
                 catch (System.Exception ex)
                 {
@@ -174,42 +174,63 @@ namespace WebScrappingFinerio
 
         public void SongsByAlbum(string artist, string album, List<string> DataList)
         {
-
-            List<Song> SongList = new List<Song>();
+            int AlbumId=0, IdArtist=0;
+            List<Song> SongsList = new List<Song>();
 
             if (DataList != null && (DataList.Any()))
             {
                 var context = new WebSBDContext();
 
-                var IdArtist = context.Artists
-                                    .Where(s => s.Name == song)
+                var IdAlbum = context.Albums
+                                    .Where(s => s.Name.Contains(album))
                                     .Select(s => s.Id)
                                     .FirstOrDefault();
 
-                if (IdArtist.Equals(0))
+                if (IdAlbum.Equals(null))
                 {
-                    //insert artist
-                    using (context)
+                    //get id artist
+                    try
                     {
-                        var artistList = new Artist()
-                        {
-                            Name = song
-                        };
-                        context.Artists.Add(artistList);
-                        context.SaveChanges();
-                        IdArtist = artistList.Id;
+                        IdArtist = context.Artists
+                                   .Where(s => s.Name == artist)
+                                   .Select(s => s.Id)
+                                   .FirstOrDefault();
+   
                     }
+                    catch (Exception ex)
+                    {
+                        ShowInfoConsole.Message("Artist not found ");
+                    }
+
+                    try
+                    {
+                        //insert album
+                        using (context)
+                        {
+                            var albumList = new Album()
+                            {
+                                Name = album,
+                                ArtistId = IdArtist
+                            };
+                            context.Albums.Add(albumList);
+                            context.SaveChanges();
+                            AlbumId = albumList.Id;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowInfoConsole.Message("Album not created ");
+                    }
+                     
                 }
 
                 try
                 {
-                    HashSet<string> hashWithoutDuplicates = new HashSet<string>(DataList);
-                    List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
-
-                    foreach (var data in listWithoutDuplicates)
+                   
+                    foreach (var data in DataList)
                     {
-                        SongList.Add(new Song { Name = data, SongList = IdArtist });
-                        context.Albums.AddRange(SongList);
+                        SongsList.Add(new Song { Name = data, AlbumId = IdAlbum });
+                        context.Songs.AddRange(SongsList);
                     }
                     context.SaveChanges();
                     Console.WriteLine($"{ DataList.Count} rows inserted in DB");
