@@ -1,7 +1,7 @@
 ## APIWebScrappingFinerio
 .Net Core Web Scrapping app and Rest API
 
-
+![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=pull_request)
 
 ### Documentation
 
