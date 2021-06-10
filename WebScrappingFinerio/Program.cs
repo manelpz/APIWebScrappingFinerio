@@ -67,15 +67,15 @@ namespace WebScrappingFinerio
                     GetInfoWeb.NameURI = $"https://us.napster.com/search/track?query={filterValue}";
                     */
 
-                    Console.WriteLine("SongByAlbum: type artist");
+                    Console.WriteLine("SongsByAlbum: type artist");
                     filterValue = Console.ReadLine();
-                    Console.WriteLine("SongByAlbum: type album");
+                    Console.WriteLine("SongsByAlbum: type album");
                     string filterValue2 = Console.ReadLine();
                     GetInfoWeb.NameClass = ".no-artist";
                     GetInfoWeb.NameURI = $"https://us.napster.com/artist/{filterValue}/album/{filterValue2}";
 
                     ListInfo = GetInfoWeb.GetInfoFilter();
-                    DataBaseConnection.SongByAlbum(filterValue, filterValue2, ListInfo);
+                    DataBaseConnection.SongsByAlbum(filterValue, filterValue2, ListInfo);
 
                     break;
                 case "5":
