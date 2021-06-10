@@ -60,13 +60,7 @@ namespace WebScrappingFinerio
 
                     break;
                 case "4":
-                    //SongsByAlbum
-                    /*Console.WriteLine("SongsByAlbum, type song:");
-                    filterValue = Console.ReadLine();
-                    GetInfoWeb.NameClass = ".artist-name";
-                    GetInfoWeb.NameURI = $"https://us.napster.com/search/track?query={filterValue}";
-                    */
-
+                   
                     Console.WriteLine("SongsByAlbum: type artist");
                     filterValue = Console.ReadLine();
                     Console.WriteLine("SongsByAlbum: type album");
@@ -81,23 +75,21 @@ namespace WebScrappingFinerio
                 case "5":
                     
                     //ArtistBySong
-                    Console.WriteLine("ArtistBySong: type artist");
-                    /*filterValue = Console.ReadLine();
-                    Console.WriteLine("SongsByAlbum: type song");
-                    string filterValue2 = Console.ReadLine();
-                    GetInfoWeb.NameClass = ".no-artist";
-                    GetInfoWeb.NameURI = $"https://us.napster.com/artist/{filterValue}/album/{filterValue2}";
-                    */
+                    Console.WriteLine("ArtistBySong: type song");
+                    filterValue = Console.ReadLine();
+                    GetInfoWeb.NameClass = ".artist-name";
+                    GetInfoWeb.NameURI = $"https://us.napster.com/search/track?query={filterValue}";
+
+                    ListInfo = GetInfoWeb.GetInfoFilter();
+                    ShowInfoConsole.showInfoFunc(ListInfo);
 
                     break;
-
                 default:
                     break;
 
             }
 
-            Console.WriteLine("*********Info Added on DataBase*********");
-
+            
 
 
         }

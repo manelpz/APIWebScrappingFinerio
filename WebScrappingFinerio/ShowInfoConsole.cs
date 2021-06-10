@@ -9,9 +9,6 @@ namespace WebScrapingFinerio
 
         string filterValue = "";
 
-        //GetInfoWeb GetInfoWeb = new GetInfoWeb();
-        //DataBaseConnection DataBaseConnection = new DataBaseConnection();
-
 
         public void ShowMenu()
         {

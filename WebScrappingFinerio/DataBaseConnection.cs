@@ -167,8 +167,6 @@ namespace WebScrappingFinerio
             {
                 ShowInfoConsole.Message("No results found ");
             }
-
-
         }
 
 
@@ -247,6 +245,7 @@ namespace WebScrappingFinerio
 
 
         }
+
 
     }
 }
