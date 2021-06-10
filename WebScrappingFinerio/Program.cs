@@ -30,9 +30,8 @@ namespace WebScrappingFinerio
                     GetInfoWeb.NameURI = $"https://us.napster.com/genre/{filterValue}";
 
                     ListInfo = GetInfoWeb.GetInfoFilter();
-                    //ShowInfoConsole.showInfoFunc(ListInfo);
                     DataBaseConnection.GenreAndSubGenre(filterValue, ListInfo);
-                   
+                    //ShowInfoConsole.showInfoFunc(ListInfo);
 
                     break;
                 case "2":
@@ -43,8 +42,8 @@ namespace WebScrappingFinerio
                     GetInfoWeb.NameURI = $"https://us.napster.com/genre/{filterValue}";
 
                     ListInfo = GetInfoWeb.GetInfoFilter();
-                    //ShowInfoConsole.showInfoFunc(ListInfo);
                     DataBaseConnection.ArtistByGenre(filterValue, ListInfo);
+                    //ShowInfoConsole.showInfoFunc(ListInfo);
 
                     break;
                 case "3":
@@ -53,6 +52,10 @@ namespace WebScrappingFinerio
                     filterValue = Console.ReadLine();
                     GetInfoWeb.NameClass = ".album_name";
                     GetInfoWeb.NameURI = $"https://us.napster.com/artist/{filterValue}";
+
+                    ListInfo = GetInfoWeb.GetInfoFilter();
+                    DataBaseConnection.ArtistByGenre(filterValue, ListInfo);
+                    //ShowInfoConsole.showInfoFunc(ListInfo);
 
                     break;
                 case "4":

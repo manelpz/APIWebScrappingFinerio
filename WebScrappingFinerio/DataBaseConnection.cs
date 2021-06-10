@@ -66,7 +66,7 @@ namespace WebScrappingFinerio
         public void ArtistByGenre(string genre, List<string> DataList)
         {
 
-            List<SubGenre> SubGenreList = new List<SubGenre>();
+            List<Artist> ArtistList = new List<Artist>();
 
             if (DataList != null && (DataList.Any()))
             {
@@ -96,10 +96,64 @@ namespace WebScrappingFinerio
                 {
                     foreach (var data in DataList)
                     {
-                        SubGenreList.Add(new SubGenre { Name = data, GenreId = IdGenre });
-                        context.SubGenres.AddRange(SubGenreList);
+                        ArtistList.Add(new Artist { Name = data, GenreId = IdGenre, SubGenreId = null });
+                        context.Artists.AddRange(ArtistList);
                     }
                     context.SaveChanges();
+                    Console.WriteLine($"{ DataList.Count} rows inserted in DB");
+                }
+                catch (System.Exception ex)
+                {
+                    ShowInfoConsole.Message("Error in database: " + ex);
+                }
+            }
+            else
+            {
+                ShowInfoConsole.Message("No results found ");
+            }
+
+
+        }
+
+
+        public void AlbumByArtist(string artist, List<string> DataList)
+        {
+
+            List<Album> AlbumList = new List<Album>();
+
+            if (DataList != null && (DataList.Any()))
+            {
+                var context = new WebSBDContext();
+
+                var IdArtist = context.Genres
+                                    .Where(s => s.Name == artist)
+                                    .Select(s => s.Id)
+                                    .FirstOrDefault();
+
+                if (IdArtist.Equals(0))
+                {
+                    //insert artist
+                    using (context)
+                    {
+                        var artistList = new Artist()
+                        {
+                            Name = artist
+                        };
+                        context.Artists.Add(artistList);
+                        context.SaveChanges();
+                        IdArtist = artistList.Id;
+                    }
+                }
+
+                try
+                {
+                    foreach (var data in DataList)
+                    {
+                        AlbumList.Add(new Album { Name = data, ArtistId = IdArtist});
+                        context.Albums.AddRange(AlbumList);
+                    }
+                    context.SaveChanges();
+                    Console.WriteLine($"{ DataList.Count} rows inserted in DB");
                 }
                 catch (System.Exception ex)
                 {
