@@ -125,7 +125,7 @@ namespace WebScrappingFinerio
             {
                 var context = new WebSBDContext();
 
-                var IdArtist = context.Genres
+                var IdArtist = context.Artists
                                     .Where(s => s.Name == artist)
                                     .Select(s => s.Id)
                                     .FirstOrDefault();
@@ -147,7 +147,10 @@ namespace WebScrappingFinerio
 
                 try
                 {
-                    foreach (var data in DataList)
+                    HashSet<string> hashWithoutDuplicates = new HashSet<string>(DataList);
+                    List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
+
+                    foreach (var data in listWithoutDuplicates)
                     {
                         AlbumList.Add(new Album { Name = data, ArtistId = IdArtist});
                         context.Albums.AddRange(AlbumList);
@@ -168,6 +171,61 @@ namespace WebScrappingFinerio
 
         }
 
+
+        public void SongsByAlbum(string artist, string album, List<string> DataList)
+        {
+
+            List<Song> SongList = new List<Song>();
+
+            if (DataList != null && (DataList.Any()))
+            {
+                var context = new WebSBDContext();
+
+                var IdArtist = context.Artists
+                                    .Where(s => s.Name == song)
+                                    .Select(s => s.Id)
+                                    .FirstOrDefault();
+
+                if (IdArtist.Equals(0))
+                {
+                    //insert artist
+                    using (context)
+                    {
+                        var artistList = new Artist()
+                        {
+                            Name = song
+                        };
+                        context.Artists.Add(artistList);
+                        context.SaveChanges();
+                        IdArtist = artistList.Id;
+                    }
+                }
+
+                try
+                {
+                    HashSet<string> hashWithoutDuplicates = new HashSet<string>(DataList);
+                    List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
+
+                    foreach (var data in listWithoutDuplicates)
+                    {
+                        SongList.Add(new Song { Name = data, SongList = IdArtist });
+                        context.Albums.AddRange(SongList);
+                    }
+                    context.SaveChanges();
+                    Console.WriteLine($"{ DataList.Count} rows inserted in DB");
+                }
+                catch (System.Exception ex)
+                {
+                    ShowInfoConsole.Message("Error in database: " + ex);
+                }
+            }
+            else
+            {
+                ShowInfoConsole.Message("No results found ");
+            }
+
+
+        }
 
     }
 }
